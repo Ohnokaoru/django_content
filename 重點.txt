@@ -1,0 +1,40 @@
+*環境:創建一最外層資料夾，之後皆在裡面動作
+
+1.建立虛擬環境: 
+- Ctrl+shift+p
+- 選擇Python:Create Environment
+- 選擇:Venv Creates
+- 選擇:python版本 #Terminal每次下指令會看見(.venv)
+
+2.安裝套件:
+- Terminal:pip list #目前有哪些套件
+- Terminal:pip install pipenv
+- Terminal:pipenv shell
+- Terminal:pipenv install django #安裝Django
+
+3.建立Django專案與功能app:
+- django-admin startproject 專案名稱(ex:potrip) . #單純建立一個專案名資料夾(如果有 .:建立一個資料夾與其同名專案資料夾)
+- python manage.py startapp 功能app(ex:app01)
+        資料:- migrations:記錄資料庫與models.py中的欄位同步歷程。
+         - __init__.py:這個檔案顯示了Django的每個應用程式(APP)，事實上就是Python套件(Package)。
+         - admin.py:可以用來定義或客製化這個應用程式(APP)在Django後台(Django Administration)的欄位顯示方式。
+         - apps.py:這個Django應用程式的設定檔。
+         - models.py:定義Django應用程式的資料庫欄位。
+         - tests.py:能夠撰寫Django應用程式的自動化測試腳本。
+         - views.py:負責接收瀏覽器的請求，進行邏輯的處理後，回傳執行結果給瀏覽器。
+         
+4.基本設定:
+- 新增最外層templates 資料夾: md templates
+- 新增最外層static 資料夾: md static
+- settings:
+        - 新增:import os
+        - INSTALLED_APPS新增:"功能app"
+        - TEMPLATES新增:os.path.join(BASE_DIR,"templates")
+        - LANGUAGE_CODE更改:"zh-hant"
+        - TIME_ZONE更改:"Asia/Taipei"
+        - 新增STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
+
+5.新增與更新遷移是資料庫:
+- (如果有在Terminal用Git控管，已下git init):新增.gitignore，並加入db.sqlite3，再下git add . 與git commit -am "要寫的訊息" #將db.sqlite3加入為控管
+- 
+
