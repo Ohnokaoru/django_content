@@ -34,7 +34,21 @@
         - TIME_ZONE更改:"Asia/Taipei"
         - 新增STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
 
-5.新增與更新遷移是資料庫:
-- (如果有在Terminal用Git控管，已下git init):新增.gitignore，並加入db.sqlite3，再下git add . 與git commit -am "要寫的訊息" #將db.sqlite3加入為控管
-- 
+5.新增與更新遷移是資料庫: #一旦models.py有變更就要更新
+- (如果有在Terminal用Git控管，已下git init):在與專案同一層中新增.gitignore，並加入db.sqlite3，再下git add . 與git commit -am "要寫的訊息" #將db.sqlite3加入為控管
+- Terminal:python manage.py makemigrations
+- Terminal:python manage.py migrate
 
+6.加入bat
+- 在與專案同一層中新增a.bat，內容為python manage.py runserver #打開網頁:ctrl+滑鼠左鍵
+
+--------------------------------------------------------------------
+*如果向上傳github:
+- github手動建資料庫
+- vscode Terminal:git remote add origin 倉庫網址
+- vscode Terminal:git remote -v #顯示綁地雲端網址
+- vscode Terminal:git push
+- vscode Terminal:git push --set-upstream origin master
+--------------------------------------------------------------------
+
+7.
