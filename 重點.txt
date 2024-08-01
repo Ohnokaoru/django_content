@@ -51,4 +51,17 @@
 - vscode Terminal:git push --set-upstream origin master
 --------------------------------------------------------------------
 
-7.
+7.建立超級使用者:
+- python manage.py createsuperuser
+
+
+#以下是依照需求而建立:
+
+*擴展User model:
+官方文件:https://docs.djangoproject.com/en/5.0/topics/auth/customizing/#substituting-a-custom-user-model
+    
+    1.一開始就創建自訂義的擴展User model:
+        - 在setting.py新增:AUTH_USER_MODEL = 'app名稱.CustomUser'
+
+    2.後面要更改，不方便修改現有的User model:
+

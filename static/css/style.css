@@ -1,0 +1,21 @@
+body {
+    background-color: blanchedalmond;
+}
+
+#title {
+    text-align: center;
+}
+
+#create-form {
+    width: 30%;
+    margin: auto;
+    padding: 10px;
+    background-color: aquamarine;
+}
+
+
+#create-button {
+    text-align: center;
+    padding: 20px;
+
+}
