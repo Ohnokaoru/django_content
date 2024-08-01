@@ -9,6 +9,11 @@
         padding: 5px;
         margin: 10px;
     }
+
+    ol {
+        list-style: none;
+        color: rgb(228, 91, 91);
+    }
 </style>
 {% endblock %}
 
@@ -37,8 +42,20 @@
                 <td>{{ form.password2 }}</td>
             </tr>
 
-            <tr>
-                <td>
+
+        </table>
+        <ul>
+            註冊規則:
+            <li>帳號為150 個字或更少，只包含字母、數字和 @/./+/-/_。</li>
+            <li>你的密碼不能與其他個人資訊太相近。</li>
+            <li>你的密碼必須包含至少 8 個字元。</li>
+            <li>你的密碼不能完全是數字。</li>
+            <li>你不能使用常見的密碼。</li>
+        </ul>
+
+        <ol>
+            <li>
+                <b>
                     message:
                     {% if form.username.errors %}
                     {% for error in form.username.errors %}
@@ -57,22 +74,15 @@
                     {{ error }}
                     {% endfor %}
                     {% endif %}
-                </td>
-            </tr>
+                </b>
+            </li>
+            <ol>
+                <div id="create-button">
+                    <input type="submit" id="create-button-submit" value="註冊">
+                    <input type="reset" id="create-button-reset" value="清除">
+                </div>
 
-        </table>
-        <ul>
-            註冊規則:
-            <li>帳號:150 個字或更少，只包含字母、數字和 @/./+/-/_。</li>
-            <li>你的密碼不能與其他個人資訊太相近。</li>
-            <li>你的密碼必須包含至少 8 個字元。</li>
-            <li>你的密碼不能完全是數字。</li>
-            <li>你不能使用常見的密碼。</li>
-        </ul>
-        <div id="create-button">
-            <input type="submit" id="create-button-submit" value="註冊">
-            <input type="reset" id="create-button-reset" value="清除">
-        </div>
+
     </form>
 </div>
 {% endblock %}
