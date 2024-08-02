@@ -16,96 +16,48 @@
 <div id="create-form">
     <form action="" method="POST">
         {% csrf_token %}
-        <table>
-            <tr>
-                <td>{{ form.username.label_tag }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.username }}</td>
-            </tr>
+        <label for="{{form.username.id_for_label}}">使用者名稱</label> <br>
+        {{ form.username }}<br>
 
-            <tr>
-                <td> {{ form.password1.label_tag }}</td>
-            </tr>
-            <tr>
-                <td> {{ form.password1 }}</td>
-            </tr>
+        <label for="{{form.password1.id_for_label}}">密碼</label><br>
+        {{ form.password1 }}<br>
 
+        <label for="{{form.password2.id_for_label}}">密碼確認</label><br>
+        {{ form.password2 }}<br>
 
-            <tr>
-                <td>{{ form.password2.label_tag }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.password2 }}</td>
-            </tr>
+        <ul>
+            <li>帳號為150 個字或更少，只包含字母、數字和 @/./+/-/_。</li>
+            <li>你的密碼不能與其他個人資訊太相近。</li>
+            <li>你的密碼必須包含至少 8 個字元。</li>
+            <li>你的密碼不能完全是數字。</li>
+            <li>你不能使用常見的密碼。</li>
+        </ul>
+        <div id="create-errors">
 
+            <b>message:</b><br>
 
+            {% for field in form %}
+            {% if field.errors %}
+            {% for error in field.errors %}
+            <b>{{ error }}</b><br>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
 
-            <ul>
-                <tr>
-                    <td>
-                        <li>帳號為150 個字或更少，只包含字母、數字和 @/./+/-/_。</li>
-                    </td>
-                </tr>
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <b>{{ error }}</b><br>
+            {% endfor %}
+            {% endif %}
 
-                <tr>
-                    <td>
-                        <li>你的密碼不能與其他個人資訊太相近。</li>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <li>你的密碼必須包含至少 8 個字元。</li>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <li>你的密碼不能完全是數字。</li>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <li>你不能使用常見的密碼。</li>
-                    </td>
-                </tr>
-            </ul>
-            <div id="create-errors">
-                <tr>
-                    <td><b>message:</b></td>
-                </tr>
-                {% for field in form %}
-                {% if field.errors %}
-                {% for error in field.errors %}
-                <tr>
-                    <td><b>{{ error }}</b></td>
-                </tr>
-                {% endfor %}
-                {% endif %}
-                {% endfor %}
-
-                {% if form.non_field_errors %}
-                {% for error in form.non_field_errors %}
-                <tr>
-                    <td><b>{{ error }}</b></td>
-                </tr>
-                {% endfor %}
-                {% endif %}
-            </div>
+        </div>
 
 
 
-            <div id="create-button">
-                <tr>
-                    <td>
-                        <input type="submit" id="create-button-submit" value="註冊">
-                        <input type="reset" id="create-button-reset" value="清除">
-                    </td>
-
-                </tr>
-
-
-            </div>
-        </table>
+        <div id="create-button">
+            <input type="submit" id="create-button-submit" value="註冊">
+            <input type="reset" id="create-button-reset" value="清除">
+        </div>
 
     </form>
 </div>

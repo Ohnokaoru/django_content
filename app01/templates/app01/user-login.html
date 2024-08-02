@@ -18,37 +18,19 @@
 <div id="login-form">
     <form action="" method="POST">
         {% csrf_token %}
-        <table>
-            <tr>
-                <td><label for="username">帳號:</label></td>
-            </tr>
-            <tr>
-                <td><input type="text" name="username" id="username" required></td>
-            </tr>
+        <label for="username">帳號</label> <br>
+        <input type="text" name="username" id="username"><br>
 
-            <tr>
-                <td><label for="password">密碼:</label></td>
-            </tr>
-            <tr>
-                <td><input type="password" name="password" id="password" required></td>
-            </tr>
+        <label for="password">密碼</label> <br>
+        <input type="text" name="password" id="password"><br>
+        <div id="login-button">
+            <input type="submit" value="確定">
+            <input type="reset" value="清除">
+        </div>
 
-            <div id="login-button">
-                <tr>
-                    <td>
-                        <input type="submit" value="確定">
-                        <input type="reset" value="清除">
-                    </td>
-                </tr>
-            </div>
-            <tr>
-                <td>message:{{message}}</td>
-            </tr>
+        message:{{message}}
 
-        </table>
     </form>
-
-
 </div>
 
 
