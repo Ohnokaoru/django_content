@@ -15,12 +15,13 @@ form {
 #login-button {
     text-align: center;
     margin: auto;
-    padding: 5px;
+    padding: 10px;
 
 }
 
 #create-form,
-#login-form {
+#login-form,
+#create-profile-form {
     width: 30%;
     margin: auto;
     padding: 10px;
