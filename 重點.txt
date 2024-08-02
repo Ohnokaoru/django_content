@@ -55,11 +55,38 @@
 - python manage.py createsuperuser
 
 *app01功能: #一般管理者或員工可經由/admin進入後台
-8.建立註冊、login與logout:
-- 內建UserCreationForm做自動做填入、驗證與儲存
+8.建立register、login與logout:
+- register:
+    - 內建UserCreationForm做填入、自動驗證與儲存:
+        - UserCreationForm(request.POST) #提交，抓取已填入資料 
+        - .is_vaild() #是否為有效form
+        - .save() #儲存
 
+- login:
+    - 抓取表單內容做認證:
+        - request.POST.get() #抓取已提交內容
+        - user=authenticate(request,username=...,password=...) #將資料與User model做比對，並回傳User object
+        - login(request, user) #將含有用戶請求數據的request與User object給login()
 
-9.建立註冊後的userprofile form:
+- login:
+    - 登出數據:
+        - logout(request)
+
 
 #以下是依照需求而建立:
+
+*templates/base.html: #共用模板
+    - {% block 名 %}內容{% endblock %}
+    - {% load static %} #載入靜態網頁
+    - <link rel="stylesheet" href="{% static 'css/style.css' %}"> #引用靜態網頁
+    
+
+*app02功能:
+建立註冊後的userprofile的model與form:
+-UserProfile建立model:
+    - from django.contrib.auth.models import User #取得內建User model
+    - user=models.OneToOneField(User,on_delete=models.CASCADE) #建立一對一關聯的外鑑，(to_field="User指定關聯的欄位")。user為id
+
+
+
 
