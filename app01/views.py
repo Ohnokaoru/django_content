@@ -31,6 +31,7 @@ def user_register(request):
 
 def user_login(request):
     message = ""
+
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
