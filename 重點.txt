@@ -54,14 +54,12 @@
 7.建立超級使用者:
 - python manage.py createsuperuser
 
+*app01功能: #一般管理者或員工可經由/admin進入後台
+8.建立註冊、login與logout:
+- 內建UserCreationForm做自動做填入、驗證與儲存
+
+
+9.建立註冊後的userprofile form:
 
 #以下是依照需求而建立:
-
-*擴展User model:
-官方文件:https://docs.djangoproject.com/en/5.0/topics/auth/customizing/#substituting-a-custom-user-model
-    
-    1.一開始就創建自訂義的擴展User model:
-        - 在setting.py新增:AUTH_USER_MODEL = 'app名稱.CustomUser'
-
-    2.後面要更改，不方便修改現有的User model:
 

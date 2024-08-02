@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title%}登入{% endblock %}
+
+{% block style %}
+<style>
+    #login-form {
+        width: 20%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="title">
+    <h2>登入</h2>
+</div>
+
+<div id="login-form">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><label for="username">帳號:</label></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="username" id="username" required></td>
+            </tr>
+
+            <tr>
+                <td><label for="password">密碼:</label></td>
+            </tr>
+            <tr>
+                <td><input type="password" name="password" id="password" required></td>
+            </tr>
+
+            <div id="login-button">
+                <tr>
+                    <td>
+                        <input type="submit" value="確定">
+                        <input type="reset" value="清除">
+                    </td>
+                </tr>
+            </div>
+            <tr>
+                <td>message:{{message}}</td>
+            </tr>
+
+        </table>
+    </form>
+
+
+</div>
+
+
+
+{% endblock %}

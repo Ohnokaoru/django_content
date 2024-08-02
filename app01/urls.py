@@ -1,4 +1,8 @@
 from django.urls import path
 from . import views
 
-urlpatterns = [path("register/", views.user_register, name="register")]
+urlpatterns = [
+    path("", views.index, name="index"),
+    path("user-register/", views.user_register, name="user-register"),
+    path("user-login/", views.user_login, name="user-login"),
+]

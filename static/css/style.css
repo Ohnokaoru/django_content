@@ -6,16 +6,40 @@ body {
     text-align: center;
 }
 
-#create-form {
+form {
+    margin: auto;
+
+}
+
+#create-button,
+#login-button {
+    text-align: center;
+    margin: auto;
+    padding: 5px;
+
+}
+
+#create-form,
+#login-form {
     width: 30%;
     margin: auto;
     padding: 10px;
     background-color: aquamarine;
+    /* text-align: left; */
 }
 
+li {
+    text-align: left;
+}
 
-#create-button {
-    text-align: center;
-    padding: 20px;
+tr,
+td {
+    text-align: left;
+    padding: 5px;
+    margin: 10px;
+}
 
+ol {
+    list-style: none;
+    color: rgb(228, 91, 91);
 }
