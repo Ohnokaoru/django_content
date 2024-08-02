@@ -69,27 +69,28 @@
                     </td>
                 </tr>
             </ul>
+            <div id="create-errors">
+                <tr>
+                    <td><b>message:</b></td>
+                </tr>
+                {% for field in form %}
+                {% if field.errors %}
+                {% for error in field.errors %}
+                <tr>
+                    <td><b>{{ error }}</b></td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
 
-            <tr>
-                <td><b>message:</b></td>
-            </tr>
-            {% for field in form %}
-            {% if field.errors %}
-            {% for error in field.errors %}
-            <tr>
-                <td><b>{{ error }}</b></td>
-            </tr>
-            {% endfor %}
-            {% endif %}
-            {% endfor %}
-
-            {% if form.non_field_errors %}
-            {% for error in form.non_field_errors %}
-            <tr>
-                <td><b>{{ error }}</b></td>
-            </tr>
-            {% endfor %}
-            {% endif %}
+                {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                <tr>
+                    <td><b>{{ error }}</b></td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </div>
 
 
 

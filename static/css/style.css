@@ -39,7 +39,17 @@ td {
     margin: 10px;
 }
 
-ol {
-    list-style: none;
-    color: rgb(228, 91, 91);
+#create-errors {
+    color: red;
+}
+
+#navbar {
+    background-color: rgb(224, 176, 141);
+    color: aliceblue;
+    padding: 5px;
+}
+
+#navbar a {
+    padding: 10px;
+
 }

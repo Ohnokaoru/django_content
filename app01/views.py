@@ -45,3 +45,9 @@ def user_login(request):
             message = "帳密錯誤"
 
     return render(request, "app01/user-login.html", locals())
+
+
+def user_logout(request):
+    logout(request)
+
+    return redirect("index")
