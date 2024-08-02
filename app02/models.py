@@ -11,7 +11,7 @@ class UserProfile(models.Model):
     tel = models.CharField(max_length=20, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
     address = models.CharField(max_length=50, blank=True, null=True)
-    # user是id
+    # UserProgile的user實際上儲存User的id
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # 後台的顯示欄位
