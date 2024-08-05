@@ -26,6 +26,7 @@ def user_register(request):
         if form.is_valid():
             # 取得user
             user = form.save()
+
             login(request, user)
             return redirect("create-userprofile")
 

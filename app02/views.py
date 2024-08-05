@@ -10,7 +10,7 @@ def create_userprofile(request):
     form = UserProfileForm()
 
     if not request.user.is_authenticated:
-        return redirect("login")
+        return redirect("user-login")
 
     if request.method == "POST":
         form = UserProfileForm(request.POST)
@@ -50,7 +50,7 @@ def edit_userprofile(request):
         # request.user 通常是一個 User model的實體物件，包括用戶的基本信息，如用戶名、電子郵件、密碼等
         userprofile = UserProfile.objects.get(user=request.user)
     except UserProfile.DoesNotExist:
-        return redirect("create_userprofile")
+        return redirect("create-userprofile")
 
     if request.method == "POST":
         if userprofile:
