@@ -17,12 +17,13 @@ def create_userprofile(request):
 
         if form.is_valid():
             userprofile = form.save(commit=False)
+            # 需要儲存前取得，不然與用戶關聯的資訊就會丟失，# 將當前登入用戶設置到 user 外鍵字段(手動設置user外鍵字段為 .user)
             userprofile.user = request.user
             userprofile.save()
 
             return redirect("userprofile-view")
         else:
-            message = f"資料錯誤: {form.errors}"
+            message = f"資料錯誤:"
 
     return render(request, "app02/create-userprofile.html", locals())
 
@@ -36,7 +37,7 @@ def userprofile_view(request):
         userprofile = UserProfile.objects.get(user=request.user)
 
     except UserProfile.DoesNotExist:
-        userprofile = None
+        return redirect("create-userprofile")
 
     return render(request, "app02/userprofile-view.html", locals())
 
@@ -60,7 +61,7 @@ def edit_userprofile(request):
 
                 return redirect("userprofile-view")
             else:
-                message = f"資料錯誤: {form.errors}"
+                message = f"資料錯誤:{form.errors}"
     else:
         form = UserProfileForm(instance=userprofile)
 

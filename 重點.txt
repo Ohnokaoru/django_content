@@ -82,11 +82,11 @@
     
 
 *app02功能:
-建立註冊後的userprofile的model、admin與form:
+建立註冊後的userprofile的model、admin與form: #讓User與userprofile做關聯，存放使用者基本資料
 - UserProfile建立model: #自定義資料表欄位
     - from django.contrib.auth.models import User #取得內建User model
     - class UserProfile(models.Model) #繼承models.Model，以使用其功能
-    - user=models.OneToOneField(User,on_delete=models.CASCADE) #建立一對一關聯的外鍵，(to_field="User指定關聯的欄位")。user實際上為User的id
+    - user=models.OneToOneField(User,on_delete=models.CASCADE,unique=True) #建立一對一關聯的外鍵，(to_field="User指定關聯的欄位")。user實際上為User的id
     - def __str__(self) #如果沒設定，後台只會看到UserProfile object
     - python manage.py makemigrations
     - python manage.py migrate
@@ -98,5 +98,8 @@
 
 
 - UserProfile建立form:
-    - 建立form.py
-    - 
+    - class UserProfileForm(forms.ModelForm):
+    - class Meta:model = UserProfile #Meta內設定關聯model與其form的fields設定
+
+
+- views.py:註冊->登入->建立使用者基本資料
