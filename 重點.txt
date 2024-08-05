@@ -86,7 +86,7 @@
 - UserProfile建立model: #自定義資料表欄位
     - from django.contrib.auth.models import User #取得內建User model
     - class UserProfile(models.Model) #繼承models.Model，以使用其功能
-    - user=models.OneToOneField(User,on_delete=models.CASCADE) #建立一對一關聯的外鍵，(to_field="User指定關聯的欄位")。user實際上為User的id
+    - user=models.OneToOneField(User,on_delete=models.CASCADE,unique=True) #建立一對一關聯的外鍵，(to_field="User指定關聯的欄位")。user實際上為User的id
     - def __str__(self) #如果沒設定，後台只會看到UserProfile object
     - python manage.py makemigrations
     - python manage.py migrate
@@ -99,4 +99,17 @@
 
 - UserProfile建立form:
     - 建立form.py
-    - 
+    - class UserProfile(forms.ModelForm)與class Meta: #設計關聯model與其欄位配置
+    - 到views.py寫邏輯
+    - 新增UserprofileForm.html與內容:
+        -<label for="{{ form.customername.id_for_label }}">姓名</label><br>
+         {{ form.customername }}<br>
+        #上兩行等同於下兩行
+         <label for="customername">姓名</label><br>
+         <input type="text" name="customername" id="customername">
+        
+
+    
+
+    
+    
