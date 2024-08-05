@@ -9,6 +9,7 @@
 <div id="create-profile-form">
     <form action="" method="POST">
         {%csrf_token%}
+
         <label for="{{ form.customername.id_for_label }}">姓名</label><br>
         {{ form.customername }}<br>
 
@@ -35,5 +36,6 @@
 
     </form>
 </div>
+message:{{message}}
 
 {% endblock %}

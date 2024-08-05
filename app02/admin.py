@@ -4,6 +4,7 @@ from .models import UserProfile
 # Register your models here.
 
 
+# 後台顯示，可依照需求寫或不寫
 class UserProfileAdmin(admin.ModelAdmin):
     # 顯示欄位
     list_display = (
@@ -29,4 +30,5 @@ class UserProfileAdmin(admin.ModelAdmin):
     ordering = ("user",)
 
 
+# 註冊
 admin.site.register(UserProfile, UserProfileAdmin)

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}基本資料頁面{% endblock %}
+{% block content %}
+<h2>基本資料</h2>
+
+<form action="" method="POST">
+    {%csrf_token%}
+    <label for="user">用戶</label><br>
+    {{ form.instance.user }}
+
+    <label for="{{ form.customername.id_for_label }}">姓名</label><br>
+    {{ form.customername }}<br>
+
+    <label for="{{ form.gender.id_for_label }}">性別</label><br>
+    {{ form.gender }}<br>
+
+    <label for="{{ form.birthday.id_for_label }}">生日 (ex:2000/01/01)</label><br>
+    {{ form.birthday }}<br>
+
+    <label for="{{ form.tel.id_for_label }}">電話</label><br>
+    {{ form.tel }}<br>
+
+    <label for="{{ form.email.id_for_label }}">電子郵件</label><br>
+    {{ form.email }}<br>
+
+    <label for="{{ form.address.id_for_label }}">地址</label><br>
+    {{ form.address }}<br>
+
+    <div id="create-profile-button">
+        <input type="submit" value="提交">
+
+    </div>
+    message:<br>
+    {{message}}
+
+</form>
+
+
+
+{% endblock %}

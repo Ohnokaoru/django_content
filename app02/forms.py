@@ -7,10 +7,10 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         # 全部欄位
-        fields = "__all__"
+        # fields = "__all__"
 
         # 選取欄位
-        # fields = ['customername', 'gender']
+        fields = ["customername", "gender", "birthday", "tel", "email", "address"]
 
         # 排除欄位
-        # exclude = ['user']
+        exclude = ["user"]

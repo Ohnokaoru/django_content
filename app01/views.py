@@ -13,6 +13,7 @@ def index(request):
     return render(request, "app01/index.html", locals())
 
 
+# 註冊後自動login並導向建立基本資料
 def user_register(request):
     # 建空表單給GET方法渲染用，一般進入頁面就是GET方法
     form = UserCreationForm()
@@ -23,12 +24,14 @@ def user_register(request):
 
         # form是否有效，會自動驗證UserCreationForm的帳密條件，並創建
         if form.is_valid():
-            form.save()
-            return redirect("user-login")
+            user = form.save()
+            login(request, user)
+            return redirect("create-userprofile")
 
     return render(request, "app01/user-register.html", locals())
 
 
+# 沒有內建表單，自己手動取值
 def user_login(request):
     message = ""
 
