@@ -7,45 +7,61 @@ from django.contrib.auth.models import User
 # 建立基本資料
 def create_userprofile(request):
     message = ""
+    form = UserProfileForm()
+
+    if not request.user.is_authenticated:
+        return redirect("login")
 
     if request.method == "POST":
-        # 嘗試獲取或創建 UserProfile 實例
-        userprofile = UserProfile.objects.create(user=request.user)
-        form = UserProfileForm(request.POST, instance=userprofile)
+        form = UserProfileForm(request.POST)
 
         if form.is_valid():
-            updated_userprofile = form.save(commit=False)
-            updated_userprofile.user = request.user  # 確保 user 欄位被設置
-            updated_userprofile.save()
+            userprofile = form.save(commit=False)
+            userprofile.user = request.user
+            userprofile.save()
 
-            return redirect("view-userprofile")
-
+            return redirect("userprofile-view")
         else:
             message = f"資料錯誤: {form.errors}"
-
-    else:
-        # GET 請求，顯示表單
-        userprofile, created = UserProfile.objects.get_or_create(user=request.user)
-        form = UserProfileForm(instance=userprofile)
 
     return render(request, "app02/create-userprofile.html", locals())
 
 
-# 基本資料頁面與修改
-def view_userprofile(request):
-    form = UserProfileForm()
+def userprofile_view(request):
+    if not request.user.is_authenticated:
+        return redirect("user-login")
 
-    # 若按下修改
-    if request.method == "POST":
+    try:
+        # 已登入一定會取到當前request.user，request.user 通常是一個 User model的實體物件，包括用戶的基本信息，如用戶名、電子郵件、密碼等
         userprofile = UserProfile.objects.get(user=request.user)
-        form = UserProfileForm(request.POST, instance=userprofile)
 
-        if form.is_valid():
-            form.save()
+    except UserProfile.DoesNotExist:
+        userprofile = None
 
-            return redirect("view-userprofile")
+    return render(request, "app02/userprofile-view.html", locals())
 
-        else:
-            message = f"修改失敗{form.errors}"
 
-    return render(request, "app02/view-userprofile.html", locals())
+# 修改基本資料
+def edit_userprofile(request):
+    if not request.user.is_authenticated:
+        return redirect("user-login")
+
+    try:
+        # request.user 通常是一個 User model的實體物件，包括用戶的基本信息，如用戶名、電子郵件、密碼等
+        userprofile = UserProfile.objects.get(user=request.user)
+    except UserProfile.DoesNotExist:
+        return redirect("create_userprofile")
+
+    if request.method == "POST":
+        if userprofile:
+            form = UserProfileForm(request.POST, instance=userprofile)
+            if form.is_valid():
+                userprofile.save()
+
+                return redirect("userprofile-view")
+            else:
+                message = f"資料錯誤: {form.errors}"
+    else:
+        form = UserProfileForm(instance=userprofile)
+
+    return render(request, "app02/edit-userprofile.html", locals())

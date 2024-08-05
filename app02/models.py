@@ -12,7 +12,7 @@ class UserProfile(models.Model):
     email = models.EmailField(blank=True, null=True)
     address = models.CharField(max_length=50, blank=True, null=True)
     # UserProgile的user實際上儲存User的id
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
 
     # 後台的顯示欄位
     def __str__(self):
