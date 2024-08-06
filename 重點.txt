@@ -72,6 +72,8 @@
     - 登出數據:
         - logout(request)
 
+- 藉由內鍵UserCreationForm創建帳密，內鍵User model記錄使用者帳號的資訊。User字串函數預設為{{user.username}}，因此當外鍵關聯user會顯示各個使用者帳號
+
 
 #以下是依照需求而建立:
 
@@ -99,7 +101,7 @@
 
 - UserProfile建立form:
     - class UserProfileForm(forms.ModelForm):
-    - class Meta:model = UserProfile #Meta內設定關聯model與其form的fields設定
+    - class Meta:model = UserProfile #Meta內設定關聯model與其form的fields設定，一般user欄位不太會顯示出來
+    - 如果其html有一欄位為userprofile.user，因為是User的實體物件，而User本身字串函數只顯示username，所以會顯示username
 
-
-- views.py:註冊->登入->建立使用者基本資料
+- views.py:註冊->登入->建立使用者基本資料->瀏覽使用者資料

@@ -11,6 +11,9 @@
         {%csrf_token%}
 
         {% if userprofile %}
+        <label for="{{userprofile.user.username.id_for_label}}">帳號:</label>
+        {{userprofile.user.username}}<br>
+
         <label for="{{userprofile.customername.id_for_label}}">姓名:</label>
         {{ userprofile.customername }}<br>
 
@@ -28,6 +31,8 @@
 
         <label for="{{userprofile.address.id_for_label}}">地址:</label>
         {{ userprofile.address }}<br>
+
+
 
         {% endif %}
 
