@@ -34,22 +34,26 @@
 
         </div>
 
+        <div id="error-message">
+            {{message}}
+        </div>
 
-        message:{{message}}
+        <div id="create-errors">
+            {% for field in form %}
+            {% if field.errors %}
+            {% for error in field.errors %}
+            <b>{{ error }}</b><br>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
 
-        {% for field in form %}
-        {% if field.errors %}
-        {% for error in field.errors %}
-        <b>{{ error }}</b><br>
-        {% endfor %}
-        {% endif %}
-        {% endfor %}
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <b>{{ error }}</b><br>
+            {% endfor %}
+            {% endif %}
+        </div>
 
-        {% if form.non_field_errors %}
-        {% for error in form.non_field_errors %}
-        <b>{{ error }}</b><br>
-        {% endfor %}
-        {% endif %}
     </form>
 
 
