@@ -3,35 +3,41 @@
 
 {% block title %}修改基本資料{% endblock %}
 {% block content %}
-<h2>修改基本資料</h2>
 
-<form action="" method="POST">
-    {%csrf_token%}
+<div id="title">
+    <h2>修改基本資料</h2>
+</div>
 
-    {% if userprofile %}
-    <label for="{{form.customername.id_for_label}}">姓名:</label>
-    {{ form.customername }}<br>
+<div id="edit-form">
+    <form action="" method="POST">
+        {%csrf_token%}
 
-    <label for="{{form.gender.id_for_label}}">性別:</label>
-    {{ form.gender }}<br>
+        {% if userprofile %}
+        <label for="{{form.customername.id_for_label}}">姓名:</label>
+        {{ form.customername }}<br>
 
-    <label for="{{form.birthday.id_for_label}}">生日:</label>
-    {{ form.birthday }}<br>
+        <label for="{{form.gender.id_for_label}}">性別:</label>
+        {{ form.gender }}<br>
 
-    <label for="{{form.tel.id_for_label}}">電話:</label>
-    {{ form.tel }}<br>
+        <label for="{{form.birthday.id_for_label}}">生日:</label>
+        {{ form.birthday }}<br>
 
-    <label for="{{form.email.id_for_label}}">電子郵件:</label>
-    {{ form.email }}<br>
+        <label for="{{form.tel.id_for_label}}">電話:</label>
+        {{ form.tel }}<br>
 
-    <label for="{{form.address.id_for_label}}">地址:</label>
-    {{ form.address }}<br>
+        <label for="{{form.email.id_for_label}}">電子郵件:</label>
+        {{ form.email }}<br>
 
-    {% endif %}
+        <label for="{{form.address.id_for_label}}">地址:</label>
+        {{ form.address }}<br>
 
-    <input type="submit" value="修改">
-    </div>
+        {% endif %}
+        <div id="edit-button">
+            <input type="submit" value="修改">
+        </div>
+</div>
 
 </form>
+</div>
 
 {% endblock %}

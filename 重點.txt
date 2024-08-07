@@ -72,6 +72,8 @@
     - 登出數據:
         - logout(request)
 
+- 藉由內鍵UserCreationForm創建帳密，內鍵User model記錄使用者帳號的資訊。User字串函數預設為{{user.username}}，因此當外鍵關聯user會顯示各個使用者帳號
+
 
 #以下是依照需求而建立:
 
@@ -82,7 +84,7 @@
     
 
 *app02功能:
-建立註冊後的userprofile的model、admin與form:
+建立註冊後的userprofile的model、admin與form: #讓User與userprofile做關聯，存放使用者基本資料
 - UserProfile建立model: #自定義資料表欄位
     - from django.contrib.auth.models import User #取得內建User model
     - class UserProfile(models.Model) #繼承models.Model，以使用其功能
@@ -98,18 +100,15 @@
 
 
 - UserProfile建立form:
-    - 建立form.py
-    - class UserProfile(forms.ModelForm)與class Meta: #設計關聯model與其欄位配置
-    - 到views.py寫邏輯
-    - 新增UserprofileForm.html與內容:
-        -<label for="{{ form.customername.id_for_label }}">姓名</label><br>
-         {{ form.customername }}<br>
-        #上兩行等同於下兩行
-         <label for="customername">姓名</label><br>
-         <input type="text" name="customername" id="customername">
-        
+    - class UserProfileForm(forms.ModelForm):
+    - class Meta:model = UserProfile #Meta內設定關聯model與其form的fields設定，一般user欄位不太會顯示出來
+    - 如果其html有一欄位為userprofile.user，因為是User的實體物件，而User本身字串函數只顯示username，所以會顯示username
 
-    
+- views.py:註冊->登入->建立使用者基本資料->瀏覽使用者資料
 
-    
-    
+
+*圖形驗證:
+- 安裝captcha:pipenv install django-simple-captcha
+- INSTALLED_APPS加入"captcha"
+- python manage.py migrate #重整資料庫
+- 在project的urls.py加入path("captcha/",include("captcha.urls")

@@ -3,34 +3,41 @@
 
 {% block title %}基本資料{% endblock %}
 {% block content %}
-<h2>基本資料</h2>
+<div id="title">
+    <h2>基本資料</h2>
+</div>
+<div id="info-list">
+    <form action="" method="POST">
+        {%csrf_token%}
 
-<form action="" method="POST">
-    {%csrf_token%}
+        {% if userprofile %}
+        <label for="{{userprofile.user.username.id_for_label}}">帳號:</label>
+        {{userprofile.user.username}}<br>
 
-    {% if userprofile %}
-    <label for="{{userprofile.customername.id_for_label}}">姓名:</label>
-    {{ userprofile.customername }}<br>
+        <label for="{{userprofile.customername.id_for_label}}">姓名:</label>
+        {{ userprofile.customername }}<br>
 
-    <label for="{{userprofile.gender.id_for_label}}">性別:</label>
-    {{ userprofile.gender }}<br>
+        <label for="{{userprofile.gender.id_for_label}}">性別:</label>
+        {{ userprofile.gender }}<br>
 
-    <label for="{{userprofile.birthday.id_for_label}}">生日:</label>
-    {{ userprofile.birthday }}<br>
+        <label for="{{userprofile.birthday.id_for_label}}">生日:</label>
+        {{ userprofile.birthday }}<br>
 
-    <label for="{{userprofile.tel.id_for_label}}">電話:</label>
-    {{ userprofile.tel }}<br>
+        <label for="{{userprofile.tel.id_for_label}}">電話:</label>
+        {{ userprofile.tel }}<br>
 
-    <label for="{{userprofile.email.id_for_label}}">電子郵件:</label>
-    {{ userprofile.email }}<br>
+        <label for="{{userprofile.email.id_for_label}}">電子郵件:</label>
+        {{ userprofile.email }}<br>
 
-    <label for="{{userprofile.address.id_for_label}}">地址:</label>
-    {{ userprofile.address }}<br>
-
-    {% endif %}
+        <label for="{{userprofile.address.id_for_label}}">地址:</label>
+        {{ userprofile.address }}<br>
 
 
-    </div>
+
+        {% endif %}
+
+</div>
+</div>
 
 </form>
 

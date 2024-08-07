@@ -8,6 +8,7 @@ from .models import UserProfile
 class UserProfileAdmin(admin.ModelAdmin):
     # 顯示欄位
     list_display = (
+        "id",
         "user",
         "customername",
         "gender",
