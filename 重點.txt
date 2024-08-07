@@ -108,7 +108,11 @@
 
 
 *圖形驗證:
-- 安裝captcha:pipenv install django-simple-captcha
-- INSTALLED_APPS加入"captcha"
-- python manage.py migrate #重整資料庫
-- 在project的urls.py加入path("captcha/",include("captcha.urls")
+- 中途加入:
+    - 安裝captcha:pipenv install django-simple-captcha
+    - INSTALLED_APPS加入"captcha" #第三方應用
+    - python manage.py migrate #重整資料庫
+    - 在project的urls.py加入path("captcha/",include("captcha.urls") 
+    - 新增名為chalogin的app，一樣在INSTALLED_APPS加入"chalogin"，與project的urls.py加入path("",include("chalogin.urls") 
+    - 新增forms.py，繼承AuthenticationForm，並新增captcha = CaptchaField()
+    - 將原本登入的user_login邏輯改為user_chalogin，使用form驗證
