@@ -105,3 +105,10 @@
     - 如果其html有一欄位為userprofile.user，因為是User的實體物件，而User本身字串函數只顯示username，所以會顯示username
 
 - views.py:註冊->登入->建立使用者基本資料->瀏覽使用者資料
+
+
+*圖形驗證:
+- 安裝captcha:pipenv install django-simple-captcha
+- INSTALLED_APPS加入"captcha"
+- python manage.py migrate #重整資料庫
+- 在project的urls.py加入path("captcha/",include("captcha.urls")

@@ -11,7 +11,6 @@ form {
 
 }
 
-#create-button,
 #login-button,
 #edit-button {
     text-align: center;
@@ -22,19 +21,14 @@ form {
 
 #create-form,
 #login-form,
-#create-profile-form,
-#edit-form,
-#info-list {
+#create-profile-form {
     width: 30%;
-    margin: 10px auto;
-    padding: 20px;
+    margin: auto;
+    padding: 10px;
     background-color: aquamarine;
     /* text-align: left; */
 }
 
-label {
-    margin-top: 300px;
-}
 
 li {
     text-align: left;
@@ -70,4 +64,8 @@ td {
 #error-message {
     color: red;
     font-weight: bold;
+}
+
+#captch-img {
+    padding: 10px;
 }

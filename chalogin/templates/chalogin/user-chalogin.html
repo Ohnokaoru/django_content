@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}登入(圖形驗證){% endblock %}
+{% block content %}
+<div id="title">
+    <h2>登入(圖形驗證)</h2>
+</div>
+<div id="chalogin-form">
+    <form action="" method="POST">
+        {%csrf_token%}
+        <label for="{{form.username.id_for_label}}">帳號</label><br>
+        {{form.username}}<br>
+
+        <label for="{{form.password.id_for_label}}">密碼</label><br>
+        {{form.password}}<br>
+
+        <div id="captch-img">
+            <label for="{{form.captcha.id_for_label}}">輸入驗證碼</label> <br>
+            {{form.captcha}} <br>
+
+        </div>
+        <input type="submit" value="提交">
+
+
+        <div id="errors">
+            {% if form.username.errors %}
+            {{form.username.errors}}
+            {% endif %}
+
+            {% if form.password.errors %}
+            {{form.password.errors}}
+            {% endif %}
+
+            {% if form.captcha.errors %}
+            {{form.captcha.errors}}
+            {% endif %}
+
+            {% if form.non_field_errors %}
+            {{ form.non_field_errors }} <br>
+            {% endif %}
+        </div>
+    </form>
+</div>
+{% endblock %}

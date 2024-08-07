@@ -35,23 +35,23 @@ def user_register(request):
 
 
 # 沒有內建表單，自己手動取值
-def user_login(request):
-    message = ""
+# def user_login(request):
+#     message = ""
 
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
+#     if request.method == "POST":
+#         username = request.POST.get("username")
+#         password = request.POST.get("password")
 
-        # 認證
-        user = authenticate(request, username=username, password=password)
-        if user:
-            login(request, user)
-            return redirect("index")
+#         # 認證
+#         user = authenticate(request, username=username, password=password)
+#         if user:
+#             login(request, user)
+#             return redirect("index")
 
-        else:
-            message = "帳密錯誤"
+#         else:
+#             message = "帳密錯誤"
 
-    return render(request, "app01/user-login.html", locals())
+#     return render(request, "app01/user-login.html", locals())
 
 
 def user_logout(request):
